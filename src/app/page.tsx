@@ -11,6 +11,7 @@ export default function Home() {
   const handleAddTask = () => {
     setAddTask(true)
   }
+
   return (
     <main className="w-full h-screen justify-center items-center py-4">
       <header className="flex justify-between px-4">
@@ -23,8 +24,7 @@ export default function Home() {
             <div className='font-bold text-[36px]'>{!addTask ? 'TAREFAS' : 'Adicionar nova tarefa'}</div>
             <button onClick={handleAddTask}>{!addTask && (<MdOutlineAddCircleOutline size={48} className='hover:scale-125' />)}</button>
           </div>
-          {!addTask && (<List />)}
-          {addTask && (< AddTask />)}
+          {!addTask ? (<List />) : addTask && (< AddTask />)}
         </div>
       </div>
     </main>

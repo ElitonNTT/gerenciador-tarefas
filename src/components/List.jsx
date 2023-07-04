@@ -15,23 +15,27 @@ export default function List() {
   ];
   return (
     <div className="flex flex-col gap-4">
-      {taskArr.map((item, key) => (
-        <div
-          key={key}
-          className="flex w-full gap-2 justify-between bg-zinc-700 p-2 shadow-md rounded"
-        >
-          <div>{item.id}</div>
-          <div className="w-2/3">{item.nome}</div>
-          <div className="flex gap-4">
-            <button>
-              <MdEditNote size={28} className="hover:scale-125" />
-            </button>
-            <button>
-              <MdOutlineDelete size={28} className="hover:scale-125" />
-            </button>
+      {taskArr.length <= 0 ? (
+        <div>Sem tarefas!</div>
+      ) : (
+        taskArr.map((item, key) => (
+          <div
+            key={key}
+            className="flex w-full gap-2 justify-between bg-zinc-700 p-2 shadow-md rounded"
+          >
+            <div>{item.id}</div>
+            <div className="w-2/3">{item.nome}</div>
+            <div className="flex gap-4">
+              <button>
+                <MdEditNote size={28} className="hover:scale-125" />
+              </button>
+              <button>
+                <MdOutlineDelete size={28} className="hover:scale-125" />
+              </button>
+            </div>
           </div>
-        </div>
-      ))}
+        ))
+      )}
     </div>
   );
 }
