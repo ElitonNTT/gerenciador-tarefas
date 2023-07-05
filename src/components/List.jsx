@@ -1,8 +1,19 @@
 import { MdOutlineDelete, MdEditNote } from "react-icons/md";
+import {
+  Accordion,
+  AccordionItem,
+  AccordionButton,
+  AccordionPanel,
+  AccordionIcon,
+} from "@chakra-ui/react";
+import Link from "next/link";
 
 export default function List() {
   const taskArr = [
-    { id: "#01", nome: "task 01" },
+    {
+      id: "#01",
+      nome: "Lembrar de lavar o uniforme",
+    },
     { id: "#02", nome: "task 02" },
     { id: "#03", nome: "task 03" },
     { id: "#04", nome: "task 04" },
@@ -19,21 +30,30 @@ export default function List() {
         <div>Sem tarefas!</div>
       ) : (
         taskArr.map((item, key) => (
-          <div
+          <Accordion
+            allowToggle
+            allowMultiple
             key={key}
             className="flex w-full gap-2 justify-between bg-zinc-700 p-2 shadow-md rounded"
           >
-            <div>{item.id}</div>
-            <div className="w-2/3">{item.nome}</div>
-            <div className="flex gap-4">
-              <button>
+            <AccordionItem className="w-full flex flex-wrap justify-between items-center border-none">
+              <h2 className="w-5/6">
+                <AccordionButton>
+                  <div>{item.id}</div>
+                  <div className="w-full text-left ml-4">{item.nome}</div>
+                </AccordionButton>
+              </h2>
+              <Link href="/editar">
                 <MdEditNote size={28} className="hover:scale-125" />
-              </button>
+              </Link>
               <button>
                 <MdOutlineDelete size={28} className="hover:scale-125" />
               </button>
-            </div>
-          </div>
+              <AccordionPanel>
+                ASIUHSDUISDHISUHSIUDAHSADUIASIUHSDUISDHISUHSIUDAHSADUIASIUHSDUISDHISUHSIUDAHSADUI
+              </AccordionPanel>
+            </AccordionItem>
+          </Accordion>
         ))
       )}
     </div>
