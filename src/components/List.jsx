@@ -36,7 +36,6 @@ export default function List() {
         taskArray.map((item, key) => (
           <Accordion
             allowToggle
-            allowMultiple
             key={key}
             className="flex w-full gap-2 justify-between bg-gray-500 p-2 shadow-md rounded"
           >

@@ -2,12 +2,13 @@
 import Link from "next/link";
 import { useState } from "react";
 import axios from "axios";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 
 export default function CriarTask() {
 
   axios.defaults.baseURL = 'http://localhost:3001'
+  const router = useRouter()
 
   const [formData, setFormData] = useState({
     titulo: '',
@@ -27,14 +28,18 @@ export default function CriarTask() {
   const handleSubmit = async (e: any) => {
     e.preventDefault()
     const data = await axios.post('/create', formData)
-    // tentar usar o router para redirecionar para lista quando criar nova tarefa
+      .then(data => {
+        router.push('/')
+        alert('Tarefa criada com sucesso')
+      })
+      .catch(error => console.log(error))
     console.log(data)
   }
 
   return (
     <form onSubmit={handleSubmit}
       className="flex justify-center h-screen items-center bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500" >
-      <div className="flex flex-col w-2/5 gap-2 p-4 text-[#fafafa]  bg-gray-600 shadow-2xl rounded-md">
+      <div className="flex flex-col w-5/6 md:w-3/5 gap-2 p-4 text-[#fafafa]  bg-gray-600 shadow-2xl rounded-md">
         <header className="font-semibold text-[28px]">Criar nova tarefa</header>
         <label htmlFor="titulo" className="text-[26px] text-white" >
           Titulo
