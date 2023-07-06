@@ -17,6 +17,7 @@ export default function List() {
   const getFetchData = async () => {
     const data = await axios.get("/");
     setTaskArray(data.data.data);
+    console.log(data);
   };
   useEffect(() => {
     getFetchData();
@@ -31,7 +32,7 @@ export default function List() {
   return (
     <div className="flex flex-col gap-4">
       {taskArray.length <= 0 ? (
-        <div>Sem tarefas!</div>
+        <div className="flex justify-center self-center">Sem tarefas!</div>
       ) : (
         taskArray.map((item, key) => (
           <Accordion
@@ -46,7 +47,7 @@ export default function List() {
                   <div className="w-full text-left ml-4">{item.titulo}</div>
                 </AccordionButton>
               </h2>
-              <Link href="/editar">
+              <Link href={"/editar/" + item._id}>
                 <MdEditNote size={28} className="hover:scale-125" />
               </Link>
               <button onClick={() => handleDelete(item._id)}>

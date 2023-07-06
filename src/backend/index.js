@@ -35,6 +35,12 @@ app.get("/", async (req, res) => {
   res.json({ success: true, data: data });
 });
 
+// get recebdno id para Update
+app.get("/:id", async (req, res) => {
+  const data = await userModel.findOne({ _id: req.params.id });
+  res.json({ success: true, data: data });
+});
+
 //create --- salvar mongo
 // http://localhost:3001/create
 app.post("/create", async (req, res) => {
@@ -49,7 +55,7 @@ app.post("/create", async (req, res) => {
 app.put("/update", async (req, res) => {
   console.log(req.body);
   const { id, ...rest } = req.body;
-  const data = await userModel.updateOne({ _id: id }, rest);
+  const data = await userModel.updateOne({ _id: _id }, rest);
   res.send({ success: true, message: "Task atualizada!", data: data });
 });
 

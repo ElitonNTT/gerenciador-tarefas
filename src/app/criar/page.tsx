@@ -30,7 +30,6 @@ export default function CriarTask() {
     const data = await axios.post('/create', formData)
       .then(data => {
         router.push('/')
-        alert('Tarefa criada com sucesso')
       })
       .catch(error => console.log(error))
     console.log(data)
