@@ -4,54 +4,56 @@ import {
   AccordionItem,
   AccordionButton,
   AccordionPanel,
-  AccordionIcon,
 } from "@chakra-ui/react";
 import Link from "next/link";
+import axios from "axios";
+import { useState, useEffect } from "react";
 
 export default function List() {
-  const taskArr = [
-    {
-      id: "#01",
-      nome: "Lembrar de lavar o uniforme",
-    },
-    { id: "#02", nome: "task 02" },
-    { id: "#03", nome: "task 03" },
-    { id: "#04", nome: "task 04" },
-    { id: "#05", nome: "task 05" },
-    { id: "#06", nome: "task 06" },
-    { id: "#07", nome: "task 07" },
-    { id: "#08", nome: "task 08" },
-    { id: "#09", nome: "task 09" },
-    { id: "#10", nome: "task 10" },
-  ];
+  const [taskArray, setTaskArray] = useState([]);
+
+  axios.defaults.baseURL = "http://localhost:3001";
+
+  const getFetchData = async () => {
+    const data = await axios.get("/");
+    setTaskArray(data.data.data);
+  };
+  useEffect(() => {
+    getFetchData();
+  }, []);
+
+  const handleDelete = async (id) => {
+    const data = await axios.delete("/delete/" + id);
+    alert("Deletado com sucesso!");
+    getFetchData();
+  };
+
   return (
     <div className="flex flex-col gap-4">
-      {taskArr.length <= 0 ? (
+      {taskArray.length <= 0 ? (
         <div>Sem tarefas!</div>
       ) : (
-        taskArr.map((item, key) => (
+        taskArray.map((item, key) => (
           <Accordion
             allowToggle
             allowMultiple
             key={key}
-            className="flex w-full gap-2 justify-between bg-zinc-700 p-2 shadow-md rounded"
+            className="flex w-full gap-2 justify-between bg-gray-500 p-2 shadow-md rounded"
           >
             <AccordionItem className="w-full flex flex-wrap justify-between items-center border-none">
               <h2 className="w-5/6">
                 <AccordionButton>
-                  <div>{item.id}</div>
-                  <div className="w-full text-left ml-4">{item.nome}</div>
+                  {/* <div>{item.user}</div> */}
+                  <div className="w-full text-left ml-4">{item.titulo}</div>
                 </AccordionButton>
               </h2>
               <Link href="/editar">
                 <MdEditNote size={28} className="hover:scale-125" />
               </Link>
-              <button>
+              <button onClick={() => handleDelete(item._id)}>
                 <MdOutlineDelete size={28} className="hover:scale-125" />
               </button>
-              <AccordionPanel>
-                ASIUHSDUISDHISUHSIUDAHSADUIASIUHSDUISDHISUHSIUDAHSADUIASIUHSDUISDHISUHSIUDAHSADUI
-              </AccordionPanel>
+              <AccordionPanel>{item.descricao}</AccordionPanel>
             </AccordionItem>
           </Accordion>
         ))
