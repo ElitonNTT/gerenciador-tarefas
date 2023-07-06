@@ -1,18 +1,20 @@
 'use client'
 import axios from "axios"
 import Link from "next/link"
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 export default function Editar({ params }: { params: { id: string } }) {
 
-  const [taskArray, setTaskArray] = useState<{ titulo: string, descricao: string }[] | any>([]);
-  const [formData, setFormData] = useState<{ id: string, titulo: string, descricao: string }>({
-    id: '',
+  const [taskArray, setTaskArray] = useState<{ id: string, titulo: string, descricao: string }[] | any>([]);
+  const [formData, setFormData] = useState<{ _id: string, titulo: string, descricao: string }>({
+    _id: '',
     titulo: '',
     descricao: ''
   })
 
   axios.defaults.baseURL = "http://localhost:3001";
+  const router = useRouter()
 
   const getFetchData = async () => {
     const data = await axios.get("/" + params.id)
@@ -31,7 +33,7 @@ export default function Editar({ params }: { params: { id: string } }) {
     if (!data.success) {
       return console.log('Aguardando')
     }
-    setFormData({ id: data.data._id, titulo: data.data.titulo, descricao: data.data.descricao })
+    setFormData({ _id: data.data._id, titulo: data.data.titulo, descricao: data.data.descricao })
   }
 
   const handleForm = (e: any) => {
@@ -45,10 +47,15 @@ export default function Editar({ params }: { params: { id: string } }) {
   }
 
   const handleSubmit = async (e: any) => {
-    e.prevent.default()
+    e.preventDefault()
     const data = await axios.put('/update', formData)
+      .then(data => {
+        alert('Tarefa atualizada!')
+        router.push('/')
+      })
+      .catch(error => console.log(error))
+    console.log(data)
   }
-  console.log(formData)
 
   return (
     <form onSubmit={handleSubmit}
