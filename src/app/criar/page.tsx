@@ -1,15 +1,13 @@
 'use client'
 import Link from "next/link";
 import { useState } from "react";
-import axios from "axios";
 import { useRouter } from "next/navigation";
-
+import axios from "axios";
 
 export default function CriarTask() {
 
   axios.defaults.baseURL = 'http://localhost:3001'
   const router = useRouter()
-
   const [formData, setFormData] = useState({
     titulo: '',
     descricao: ''

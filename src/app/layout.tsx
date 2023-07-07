@@ -1,12 +1,12 @@
-import Header from '@/components/Header'
 import './globals.css'
 import { Inter } from 'next/font/google'
+import Provider from '@/components/Provider'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
   title: 'Gerenciador de Tarefas',
-  description: '',
+  description: 'Descricao',
 }
 
 export default function RootLayout({
@@ -16,7 +16,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
-    </html>
+      <Provider>
+        <body className={inter.className}>
+          {children}
+        </body>
+      </Provider>
+    </html >
   )
 }

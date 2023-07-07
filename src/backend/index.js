@@ -9,7 +9,7 @@ app.use(express.json());
 const PORT = process.env.PORT || 3001;
 
 mongoose
-  .connect("mongodb+srv://netto:BdDau2BFjGKMhv37@cluster0.tyfvilu.mongodb.net/")
+  .connect(`mongodb+srv://netto:BdDau2BFjGKMhv37@cluster0.tyfvilu.mongodb.net/`)
   .then(() => {
     console.log("Conectado com mongodb");
     app.listen(PORT, () => console.log("Server funcionando"));

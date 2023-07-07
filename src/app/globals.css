@@ -4,19 +4,5 @@
 
 body {
   min-height: 100dvh;
-  background-image: linear-gradient(
-    to left bottom,
-    #845ec2,
-    #8d69c5,
-    #9775c8,
-    #9f80ca,
-    #a88ccd,
-    #b297d2,
-    #bca3d6,
-    #c6afdb,
-    #d4bde4,
-    #e1ccec,
-    #eedbf6,
-    #fbeaff
-  );
+  background-color: #cacaca;
 }

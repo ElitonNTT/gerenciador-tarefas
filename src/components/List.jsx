@@ -40,7 +40,6 @@ export default function List() {
     .filter((element) =>
       element.toLocaleLowerCase().includes(field.toLocaleLowerCase())
     );
-
   console.log(filtro);
 
   return (
