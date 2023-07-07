@@ -11,6 +11,7 @@ import { useState, useEffect } from "react";
 
 export default function List() {
   const [taskArray, setTaskArray] = useState([]);
+  const [field, setField] = useState("");
 
   axios.defaults.baseURL = "http://localhost:3001";
 
@@ -29,8 +30,28 @@ export default function List() {
     getFetchData();
   };
 
+  const handleFilter = (e) => {
+    const value = e.target.value;
+    setField(value);
+  };
+
+  const filtro = taskArray
+    .map((element) => element.titulo)
+    .filter((element) =>
+      element.toLocaleLowerCase().includes(field.toLocaleLowerCase())
+    );
+
+  console.log(filtro);
+
   return (
     <div className="flex flex-col gap-4">
+      <input
+        id="field"
+        value={field}
+        onChange={handleFilter}
+        className="text-black px-2"
+        placeholder="Filtrar"
+      />
       {taskArray.length <= 0 ? (
         <div className="flex justify-center self-center">Sem tarefas!</div>
       ) : (
