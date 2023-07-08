@@ -1,4 +1,4 @@
-import { MdOutlineDelete, MdEditNote } from "react-icons/md";
+import { MdOutlineDelete, MdEditNote, MdOutlineSearch } from "react-icons/md";
 import {
   Accordion,
   AccordionItem,
@@ -41,13 +41,16 @@ export default function List() {
 
   return (
     <div className="flex flex-col gap-4">
-      <input
-        id="field"
-        value={field}
-        onChange={handleFilter}
-        className="text-black px-2"
-        placeholder="Filtrar"
-      />
+      <div className="flex w-full items-center justify-center gap-2">
+        <MdOutlineSearch size={36} />
+        <input
+          id="field"
+          value={field}
+          onChange={handleFilter}
+          className="text-white px-2 bg-gray-700 rounded-sm border-b-2 border-white"
+          placeholder="Filtrar..."
+        />
+      </div>
       {filteredTasks.length <= 0 ? (
         <div className="flex justify-center self-center">Sem tarefas!</div>
       ) : (

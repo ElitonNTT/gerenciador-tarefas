@@ -70,7 +70,7 @@ export default function Editar({ params }: { params: { id: string } }) {
           name="titulo"
           value={formData.titulo}
           onChange={handleForm}
-          className="bg-transparent font-light border-b-2 border-zinc-400 px-2 rounded-sm text-[22px] outline-none"
+          className="bg-gray-700 font-light border-b-2 border-zinc-400 px-2 rounded-sm text-[22px] outline-none"
         />
         <label htmlFor="descricao" className=" text-[26px] text-white">
           Descrição
@@ -80,7 +80,7 @@ export default function Editar({ params }: { params: { id: string } }) {
           name="descricao"
           value={formData.descricao}
           onChange={handleForm}
-          className="bg-transparent font-light border-b-2 border-zinc-400  px-2 rounded-sm text-[22px] outline-none"
+          className="bg-gray-700 font-light border-b-2 border-zinc-400  px-2 rounded-sm text-[22px] outline-none"
         />
         <div className="flex w-full justify-between mt-2">
           <button type="submit" className="rounded-md bg-green-700 p-4 text-white hover:scale-105">Salvar Alteração</button>

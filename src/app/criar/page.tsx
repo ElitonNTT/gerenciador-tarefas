@@ -44,7 +44,7 @@ export default function CriarTask() {
         <input
           id="titulo"
           name="titulo"
-          className="bg-transparent font-light border-b-2 border-zinc-400 px-2 rounded-sm text-[22px] outline-none"
+          className="bg-gray-700 font-light border-b-2 border-zinc-400 px-2 rounded-sm text-[22px] outline-none"
           placeholder="Lavar o uniforme"
           onChange={handleChange}
         />
@@ -54,7 +54,7 @@ export default function CriarTask() {
         <input
           id="descricao"
           name="descricao"
-          className="bg-transparent font-light border-b-2 border-zinc-400 px-2 rounded-sm text-[22px] outline-none"
+          className="bg-gray-700 font-light border-b-2 border-zinc-400 px-2 rounded-sm text-[22px] outline-none"
           placeholder="Não voltar com a Ex"
           onChange={handleChange}
         />
