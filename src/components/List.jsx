@@ -35,12 +35,9 @@ export default function List() {
     setField(value);
   };
 
-  const filtro = taskArray
-    .map((element) => element.titulo)
-    .filter((element) =>
-      element.toLocaleLowerCase().includes(field.toLocaleLowerCase())
-    );
-  console.log(filtro);
+  const filteredTasks = taskArray.filter((element) =>
+    element.titulo.toLocaleLowerCase().includes(field.toLocaleLowerCase())
+  );
 
   return (
     <div className="flex flex-col gap-4">
@@ -51,10 +48,10 @@ export default function List() {
         className="text-black px-2"
         placeholder="Filtrar"
       />
-      {taskArray.length <= 0 ? (
+      {filteredTasks.length <= 0 ? (
         <div className="flex justify-center self-center">Sem tarefas!</div>
       ) : (
-        taskArray.map((item, key) => (
+        filteredTasks.map((item, key) => (
           <Accordion
             allowToggle
             key={key}
