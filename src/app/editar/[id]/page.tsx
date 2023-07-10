@@ -62,7 +62,7 @@ export default function Editar({ params }: { params: { id: string } }) {
     console.log(data)
   }
   if (!session) {
-    router.push('/entrar')
+    router.push('/')
   }
 
   return (
@@ -92,7 +92,7 @@ export default function Editar({ params }: { params: { id: string } }) {
         />
         <div className="flex w-full justify-between mt-2">
           <button type="submit" className="rounded-md bg-green-700 p-4 text-white hover:scale-105">Salvar Alteração</button>
-          <Link href='/' className="text-white font-light p-4 hover:scale-105">Cancelar</Link>
+          <Link href='/inicio' className="text-white font-light p-4 hover:scale-105">Cancelar</Link>
         </div>
       </div >
     </form >

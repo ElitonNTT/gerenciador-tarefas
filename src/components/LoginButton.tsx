@@ -12,7 +12,7 @@ const LoginButton = () => {
   const router = useRouter()
 
   if (session) {
-    router.push('/')
+    router.push('/inicio')
   }
 
   return (
