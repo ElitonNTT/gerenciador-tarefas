@@ -19,7 +19,7 @@ export default function RootLayout({
     <html lang="en">
       <Provider>
         <body className='bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500' >
-          <header className='flex justify-end w-full p-4'>
+          <header className='fixed justify-end p-4 right-0'>
             <MainHeader />
           </header>
           {children}

@@ -56,7 +56,7 @@ export default function Editar({ params }: { params: { id: string } }) {
     const data = await axios.put('/update', formData)
       .then(data => {
         alert('Tarefa atualizada!')
-        router.push('/')
+        router.push('/inicio')
       })
       .catch(error => console.log(error))
     console.log(data)
@@ -67,7 +67,7 @@ export default function Editar({ params }: { params: { id: string } }) {
 
   return (
     <form onSubmit={handleSubmit}
-      className="flex justify-center h-screen items-center">
+      className="flex justify-center min-h-screen items-center">
       <div className="flex flex-col w-5/6 md:w-3/5 gap-2 p-4 text-[#fafafa] bg-gray-600 shadow-2xl rounded-md">
         <header className="font-semibold text-[28px]">Editar</header>
         <label htmlFor="title" className="text-[26px] text-white" >

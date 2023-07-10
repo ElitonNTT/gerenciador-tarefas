@@ -19,7 +19,8 @@ export const authOption = {
     }),
   ],
   pages: {
-    signIn: "/",
+    signIn: "/inicio",
+    signOut: "/",
   },
 };
 
