@@ -1,5 +1,5 @@
 'use client'
-import { signIn, signOut, useSession } from 'next-auth/react'
+import { signIn, useSession } from 'next-auth/react'
 import { useRouter } from 'next/navigation'
 import { FcGoogle } from 'react-icons/fc'
 import { ImGithub } from 'react-icons/im'
@@ -8,7 +8,6 @@ import { BsDiscord } from 'react-icons/bs'
 
 const LoginButton = () => {
   const { data: session } = useSession()
-  console.log(session)
   const router = useRouter()
 
   if (session) {
