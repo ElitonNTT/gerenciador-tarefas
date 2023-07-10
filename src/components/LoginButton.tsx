@@ -1,6 +1,18 @@
 'use client'
+import { data } from 'autoprefixer'
 import { signIn, signOut, useSession } from 'next-auth/react'
+import { useRouter } from 'next/navigation'
+
+
 const LoginButton = () => {
+  const { data: session } = useSession()
+  console.log(session)
+  const router = useRouter()
+
+  if (session) {
+    router.push('/')
+  }
+
   return (
     <div className='flex gap-2'>
       <button

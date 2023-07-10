@@ -1,5 +1,7 @@
 import LoginButton from '@/components/LoginButton'
+
 export default function Login() {
+
   return (
     <main className='h-screen flex justify-center items-center bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500'>
       <form action="" className='flex flex-col gap-4 p-4 rounded-2xl shadow-slate-600 shadow-md bg-gray-600'>

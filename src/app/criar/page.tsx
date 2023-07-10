@@ -3,8 +3,12 @@ import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import axios from "axios";
+import { useSession } from "next-auth/react";
 
 export default function CriarTask() {
+
+
+  const { data: session } = useSession()
 
   axios.defaults.baseURL = 'http://localhost:3001'
   const router = useRouter()
@@ -31,6 +35,10 @@ export default function CriarTask() {
       })
       .catch(error => console.log(error))
     console.log(data)
+  }
+
+  if (!session) {
+    router.push('/entrar')
   }
 
   return (

@@ -1,10 +1,15 @@
 'use client'
 import axios from "axios"
+import { useSession } from "next-auth/react";
 import Link from "next/link"
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 export default function Editar({ params }: { params: { id: string } }) {
+
+
+  const { data: session } = useSession()
+
 
   const [taskArray, setTaskArray] = useState<{ id: string, titulo: string, descricao: string }[] | any>([]);
   const [formData, setFormData] = useState<{ _id: string, titulo: string, descricao: string }>({
@@ -55,6 +60,9 @@ export default function Editar({ params }: { params: { id: string } }) {
       })
       .catch(error => console.log(error))
     console.log(data)
+  }
+  if (!session) {
+    router.push('/entrar')
   }
 
   return (

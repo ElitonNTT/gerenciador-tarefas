@@ -2,8 +2,18 @@
 import { ChakraProvider } from '@chakra-ui/react'
 import List from '@/components/List'
 import Link from 'next/link'
+import { useSession } from 'next-auth/react'
+import { useRouter } from 'next/navigation'
+
 
 export default function Home() {
+
+  const router = useRouter()
+  const { data: session } = useSession()
+  if (!session) {
+    router.push('/entrar')
+  }
+
   return (
     <main className="min-h-screen py-4 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
       <div className="flex flex-col justify-center items-center">
