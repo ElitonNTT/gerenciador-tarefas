@@ -73,7 +73,10 @@ export default function List() {
               <button onClick={() => handleDelete(item._id)}>
                 <MdOutlineDelete size={28} className="hover:scale-125" />
               </button>
-              <AccordionPanel>{item.descricao}</AccordionPanel>
+              <AccordionPanel>
+                <h3 className="text-gray-300">Criado por: {item.user}</h3>
+                <h2>Descrição: {item.descricao}</h2>
+              </AccordionPanel>
             </AccordionItem>
           </Accordion>
         ))

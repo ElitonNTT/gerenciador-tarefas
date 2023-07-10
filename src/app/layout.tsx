@@ -1,8 +1,7 @@
 import './globals.css'
 import { Inter } from 'next/font/google'
 import Provider from '@/components/Provider'
-import { signOut } from 'next-auth/react'
-import LogoutButton from '@/components/LogoutButton'
+import MainHeader from '@/components/MainHeader'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -19,9 +18,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <Provider>
-        <body className={inter.className}>
-          <header className='fixed flex justify-end w-full'>
-            <LogoutButton />
+        <body className='bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500' >
+          <header className='flex justify-end w-full p-4'>
+            <MainHeader />
           </header>
           {children}
         </body>

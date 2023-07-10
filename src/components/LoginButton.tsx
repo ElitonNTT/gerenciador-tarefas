@@ -1,7 +1,9 @@
 'use client'
-import { data } from 'autoprefixer'
 import { signIn, signOut, useSession } from 'next-auth/react'
 import { useRouter } from 'next/navigation'
+import { FcGoogle } from 'react-icons/fc'
+import { ImGithub } from 'react-icons/im'
+import { BsDiscord } from 'react-icons/bs'
 
 
 const LoginButton = () => {
@@ -20,21 +22,21 @@ const LoginButton = () => {
         onClick={() => signIn("google")}
         className='flex justify-center items-center gap-12 text-black
       bg-white w-24 h-16 rounded-2xl shadow-2xl hover:scale-105 hover:bg-green-700 hover:text-white' >
-        Google
+        <FcGoogle size={32} />
       </button>
       <button
         type='button'
         onClick={() => signIn("github")}
         className='flex justify-center items-center gap-12 text-black
       bg-white w-24 h-16 rounded-2xl shadow-2xl hover:scale-105 hover:bg-green-700 hover:text-white' >
-        Github
+        <ImGithub size={32} />
       </button>
       <button
         type='button'
         onClick={() => signIn("discord")}
         className='flex justify-center items-center gap-12 text-black
       bg-white w-24 h-16 rounded-2xl shadow-2xl hover:scale-105 hover:bg-green-700 hover:text-white' >
-        Discord
+        <BsDiscord size={32} />
       </button>
     </div>
   )

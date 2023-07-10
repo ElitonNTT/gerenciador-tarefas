@@ -67,7 +67,7 @@ export default function Editar({ params }: { params: { id: string } }) {
 
   return (
     <form onSubmit={handleSubmit}
-      className="flex justify-center h-screen items-center bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
+      className="flex justify-center h-screen items-center">
       <div className="flex flex-col w-5/6 md:w-3/5 gap-2 p-4 text-[#fafafa] bg-gray-600 shadow-2xl rounded-md">
         <header className="font-semibold text-[28px]">Editar</header>
         <label htmlFor="title" className="text-[26px] text-white" >
