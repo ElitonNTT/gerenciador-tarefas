@@ -1,5 +1,4 @@
 'use client'
-import { ChakraProvider } from '@chakra-ui/react'
 import List from '@/components/List'
 import Link from 'next/link'
 import { useSession } from 'next-auth/react'
@@ -22,9 +21,7 @@ export default function Home() {
             <header>Gerenciador de Tarefas</header>
             <Link href='/criar' className='rounded-md bg-green-700 p-2 text-white hover:scale-105'>Criar tarefa</Link>
           </div>
-          <ChakraProvider>
-            <List />
-          </ChakraProvider>
+          <List />
         </div>
       </div>
     </main>
